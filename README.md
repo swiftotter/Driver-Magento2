@@ -6,7 +6,7 @@ For more information about how Driver works, see https://github.com/SwiftOtter/D
 ### How to use these modules:
 
 ```bash
-composer require swiftotter/driver-magento1
+composer require swiftotter/driver-magento2
 ```
 
 In your project's root directory (the one where `vendor` is), create a new
