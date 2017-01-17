@@ -1,0 +1,8 @@
+/vendor/
+.idea
+.phpstorm.meta.php
+composer.lock
+/vagrant/
+/config.d/
+.DS_Store
+sample/
