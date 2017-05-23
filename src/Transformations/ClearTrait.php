@@ -33,7 +33,6 @@ trait ClearTrait
             $formattedTable = $this->utilities->tableName($table);
 
             $environment->addIgnoredTable($formattedTable);
-            $this->utilities->clearTable($formattedTable);
         });
     }
 }
