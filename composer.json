@@ -3,7 +3,7 @@
     "description": "The Magento 2 transformation component",
     "type": "library",
     "require": {
-        "swiftotter/driver": "*"
+        "swiftotter/driver": "^2.0"
     },
     "version":"1.0.1",
     "autoload": {
