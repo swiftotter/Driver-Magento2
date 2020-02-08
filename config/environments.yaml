@@ -1,0 +1,15 @@
+environments:
+  default:
+    empty_tables:
+      - cron_schedule
+      - email_catalog
+      - import_history
+      - importexport_importdata
+      - oauth_consumer
+      - oauth_token
+      - report_event
+      - report_viewed_product_aggregated_daily
+      - report_viewed_product_aggregated_monthly
+      - report_viewed_product_aggregated_yearly
+      - report_viewed_product_index
+      - search_query

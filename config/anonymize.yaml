@@ -1,0 +1,174 @@
+anonymize:
+  tables:
+    customer_entity:
+      email:
+        type: email
+      firstname:
+        type: firstname
+      lastname:
+        type: lastname
+      dob:
+        type: empty
+      taxvat:
+        type: general
+    customer_address_entity:
+      city:
+        type: city
+      company:
+        type: company
+      fax:
+        type: phone
+      firstname:
+        type: firstname
+      lastname:
+        type: lastname
+      postcode:
+        type: postcode
+      street:
+        type: street
+      region:
+        type: region
+      region_id:
+        type: region_id
+      country_id:
+        type: country_id
+      telephone:
+        type: phone
+      vat_id:
+        type: general
+    customer_grid_flat:
+      name:
+        type: full_name
+      email:
+        type: email
+      dob:
+        type: empty
+      shipping_full:
+        type: address
+      billing_full:
+        type: address
+      billing_firstname:
+        type: firstname
+      billing_lastname:
+        type: lastname
+      billing_telephone:
+        type: phone
+      billing_postcode:
+        type: postcode
+      billing_street:
+        type: street
+      billing_company:
+        type: general
+    newsletter_subscriber:
+      subscriber_email:
+        type: email
+    quote:
+      customer_email:
+        type: email
+      customer_firstname:
+        type: firstname
+      customer_middlename:
+        type: empty
+      customer_lastname:
+        type: lastname
+      customer_dob:
+        type: empty
+      remote_ip:
+        type: ip
+    quote_address:
+      email:
+        type: email
+      firstname:
+        type: firstname
+      middlename:
+        type: empty
+      lastname:
+        type: lastname
+      company:
+        type: general
+      street:
+        type: street
+      telephone:
+        type: phone
+    sales_creditmemo_grid:
+      billing_name:
+        type: full_name
+      billing_address:
+        type: address
+      shipping_address:
+        type: address
+      customer_name:
+        type: full_name
+      customer_email:
+        type: email
+    sales_invoice_grid:
+      customer_name:
+        type: full_name
+      customer_email:
+        type: email
+      billing_name:
+        type: full_name
+      billing_address:
+        type: address
+      shipping_address:
+        type: address
+    sales_order:
+      customer_email:
+        type: email
+      customer_firstname:
+        type: firstname
+      customer_middlename:
+        type: empty
+      customer_lastname:
+        type: lastname
+      remote_ip:
+        type: ip
+      x_forwarded_for:
+        type: ip
+    sales_order_address:
+      firstname:
+        type: firstname
+      middlename:
+        type: empty
+      lastname:
+        type: lastname
+      company:
+        type: company
+      vat_id:
+        type: general
+      street:
+        type: street
+      email:
+        type: email
+      telephone:
+        type: phone
+    sales_order_grid:
+      shipping_name:
+        type: full_name
+      billing_name:
+        type: full_name
+      billing_address:
+        type: address
+      shipping_address:
+        type: address
+      customer_email:
+        type: email
+      customer_name:
+        type: full_name
+    sales_order_payment:
+      additional_information:
+        type: empty
+    sales_shipment_grid:
+      customer_email:
+        type: email
+      billing_name:
+        type: full_name
+      shipping_name:
+        type: full_name
+      billing_address:
+        type: address
+      shipping_address:
+        type: address
+    sales_shipment_track:
+      track_number:
+        type: empty
