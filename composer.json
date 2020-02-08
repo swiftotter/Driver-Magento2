@@ -5,7 +5,6 @@
     "require": {
         "swiftotter/driver": "^2.0"
     },
-    "version":"1.0.1",
     "autoload": {
         "psr-4": {"Driver\\Magento2\\": "src/"}
     },
