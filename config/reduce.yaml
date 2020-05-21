@@ -18,6 +18,3 @@ reduce:
     quote:
       column: created_at
       statement: < DATE_SUB(NOW(),INTERVAL 1 YEAR)
-    customer_entity:
-      column: created_at
-      statement: < DATE_SUB(NOW(),INTERVAL 1 YEAR)
