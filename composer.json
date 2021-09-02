@@ -3,7 +3,7 @@
     "description": "The Magento 2 transformation component",
     "type": "library",
     "require": {
-        "swiftotter/driver": "^3.1.0"
+        "swiftotter/driver": "^3.2.0"
     },
     "autoload": {
         "psr-4": {"Driver\\Magento2\\": "src/"}
