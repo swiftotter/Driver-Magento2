@@ -3,3 +3,9 @@ connections:
     - type: magento2
       path: app/etc/env.php
       lookup: Driver\Magento2\Magento2Connection
+      preserve:
+        core_config_data:
+            path:
+              - web/%secure/%url
+              - web/cookie/cookie_domain
+              - catalog/search/%

@@ -101,4 +101,9 @@ class Magento2Connection implements ConnectionInterface
     {
         return $this->getDetails()['password'];
     }
+
+    public function getPreserve(): array
+    {
+        return $this->settings['preserve'] ?? [];
+    }
 }
