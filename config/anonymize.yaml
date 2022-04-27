@@ -101,7 +101,29 @@ anonymize:
         type: full_name
       customer_email:
         type: email
+    magento_sales_creditmemo_grid_archive:
+      billing_name:
+        type: full_name
+      billing_address:
+        type: address
+      shipping_address:
+        type: address
+      customer_name:
+        type: full_name
+      customer_email:
+        type: email
     sales_invoice_grid:
+      customer_name:
+        type: full_name
+      customer_email:
+        type: email
+      billing_name:
+        type: full_name
+      billing_address:
+        type: address
+      shipping_address:
+        type: address
+    magento_sales_invoice_grid_archive:
       customer_name:
         type: full_name
       customer_email:
@@ -155,6 +177,19 @@ anonymize:
         type: email
       customer_name:
         type: full_name
+    magento_sales_order_grid_archive:
+      shipping_name:
+        type: full_name
+      billing_name:
+        type: full_name
+      billing_address:
+        type: address
+      shipping_address:
+        type: address
+      customer_email:
+        type: email
+      customer_name:
+        type: full_name
     sales_order_payment:
       additional_information:
         type: empty
@@ -169,6 +204,34 @@ anonymize:
         type: address
       shipping_address:
         type: address
+    magento_sales_shipment_grid_archive:
+      customer_email:
+        type: email
+      billing_name:
+        type: full_name
+      shipping_name:
+        type: full_name
+      billing_address:
+        type: address
+      shipping_address:
+        type: address
     sales_shipment_track:
       track_number:
         type: empty
+    magento_rma:
+      customer_custom_email:
+        type: email
+    magento_rma_grid:
+      customer_name:
+        type: full_name        
+    magento_invitation:
+      email:
+        type: email
+      message:
+        type: general
+   password_reset_request_event:
+     account_reference:
+       type: email
+     ip: 
+       type: ip
+        
