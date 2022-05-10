@@ -223,15 +223,15 @@ anonymize:
         type: email
     magento_rma_grid:
       customer_name:
-        type: full_name        
+        type: full_name
     magento_invitation:
       email:
         type: email
       message:
         type: general
-   password_reset_request_event:
-     account_reference:
-       type: email
-     ip: 
-       type: ip
-        
+    password_reset_request_event:
+       account_reference:
+         type: email
+       ip:
+         type: ip
+
