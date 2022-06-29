@@ -37,8 +37,6 @@ anonymize:
       vat_id:
         type: general
     customer_grid_flat:
-      name:
-        type: full_name
       email:
         type: email
       dob:
@@ -86,50 +84,36 @@ anonymize:
         type: lastname
       company:
         type: general
+      postcode:
+        type: postcode
       street:
         type: street
       telephone:
         type: phone
     sales_creditmemo_grid:
-      billing_name:
-        type: full_name
       billing_address:
         type: address
       shipping_address:
         type: address
-      customer_name:
-        type: full_name
       customer_email:
         type: email
     magento_sales_creditmemo_grid_archive:
-      billing_name:
-        type: full_name
       billing_address:
         type: address
       shipping_address:
         type: address
-      customer_name:
-        type: full_name
       customer_email:
         type: email
     sales_invoice_grid:
-      customer_name:
-        type: full_name
       customer_email:
         type: email
-      billing_name:
-        type: full_name
       billing_address:
         type: address
       shipping_address:
         type: address
     magento_sales_invoice_grid_archive:
-      customer_name:
-        type: full_name
       customer_email:
         type: email
-      billing_name:
-        type: full_name
       billing_address:
         type: address
       shipping_address:
@@ -165,41 +149,25 @@ anonymize:
       telephone:
         type: phone
     sales_order_grid:
-      shipping_name:
-        type: full_name
-      billing_name:
-        type: full_name
       billing_address:
         type: address
       shipping_address:
         type: address
       customer_email:
         type: email
-      customer_name:
-        type: full_name
     magento_sales_order_grid_archive:
-      shipping_name:
-        type: full_name
-      billing_name:
-        type: full_name
       billing_address:
         type: address
       shipping_address:
         type: address
       customer_email:
         type: email
-      customer_name:
-        type: full_name
     sales_order_payment:
       additional_information:
         type: empty
     sales_shipment_grid:
       customer_email:
         type: email
-      billing_name:
-        type: full_name
-      shipping_name:
-        type: full_name
       billing_address:
         type: address
       shipping_address:
@@ -207,10 +175,6 @@ anonymize:
     magento_sales_shipment_grid_archive:
       customer_email:
         type: email
-      billing_name:
-        type: full_name
-      shipping_name:
-        type: full_name
       billing_address:
         type: address
       shipping_address:
@@ -230,8 +194,7 @@ anonymize:
       message:
         type: general
     password_reset_request_event:
-       account_reference:
-         type: email
-       ip:
-         type: ip
-
+      account_reference:
+        type: email
+      ip:
+        type: ip
