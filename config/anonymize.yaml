@@ -5,6 +5,8 @@ anonymize:
         type: email
       firstname:
         type: firstname
+      middlename:
+        type: empty
       lastname:
         type: lastname
       dob:
@@ -20,18 +22,14 @@ anonymize:
         type: phone
       firstname:
         type: firstname
+      middlename:
+        type: empty
       lastname:
         type: lastname
       postcode:
         type: postcode
       street:
         type: street
-      region:
-        type: region
-      region_id:
-        type: region_id
-      country_id:
-        type: country_id
       telephone:
         type: phone
       vat_id:
@@ -41,10 +39,6 @@ anonymize:
         type: email
       dob:
         type: empty
-      shipping_full:
-        type: address
-      billing_full:
-        type: address
       billing_firstname:
         type: firstname
       billing_lastname:
@@ -55,8 +49,14 @@ anonymize:
         type: postcode
       billing_street:
         type: street
+      billing_city:
+        type: city
       billing_company:
         type: general
+      billing_vat_id:
+        type: general
+      billing_fax:
+        type: phone
     newsletter_subscriber:
       subscriber_email:
         type: email
@@ -83,41 +83,27 @@ anonymize:
       lastname:
         type: lastname
       company:
-        type: general
+        type: company
       postcode:
         type: postcode
       street:
         type: street
+      city:
+        type: city
       telephone:
         type: phone
     sales_creditmemo_grid:
-      billing_address:
-        type: address
-      shipping_address:
-        type: address
       customer_email:
         type: email
     magento_sales_creditmemo_grid_archive:
-      billing_address:
-        type: address
-      shipping_address:
-        type: address
       customer_email:
         type: email
     sales_invoice_grid:
       customer_email:
         type: email
-      billing_address:
-        type: address
-      shipping_address:
-        type: address
     magento_sales_invoice_grid_archive:
       customer_email:
         type: email
-      billing_address:
-        type: address
-      shipping_address:
-        type: address
     sales_order:
       customer_email:
         type: email
@@ -127,6 +113,8 @@ anonymize:
         type: empty
       customer_lastname:
         type: lastname
+      customer_taxvat:
+        type: general
       remote_ip:
         type: ip
       x_forwarded_for:
@@ -148,18 +136,14 @@ anonymize:
         type: email
       telephone:
         type: phone
+      postcode:
+        type: postcode
+      city:
+        type: city
     sales_order_grid:
-      billing_address:
-        type: address
-      shipping_address:
-        type: address
       customer_email:
         type: email
     magento_sales_order_grid_archive:
-      billing_address:
-        type: address
-      shipping_address:
-        type: address
       customer_email:
         type: email
     sales_order_payment:
@@ -168,26 +152,15 @@ anonymize:
     sales_shipment_grid:
       customer_email:
         type: email
-      billing_address:
-        type: address
-      shipping_address:
-        type: address
     magento_sales_shipment_grid_archive:
       customer_email:
         type: email
-      billing_address:
-        type: address
-      shipping_address:
-        type: address
     sales_shipment_track:
       track_number:
         type: empty
     magento_rma:
       customer_custom_email:
         type: email
-    magento_rma_grid:
-      customer_name:
-        type: full_name
     magento_invitation:
       email:
         type: email
