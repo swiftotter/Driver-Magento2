@@ -11,6 +11,8 @@ use Driver\Engines\ConnectionInterface;
 use Driver\Engines\ConnectionTrait;
 use Driver\System\Configuration;
 
+use function realpath;
+
 class Magento2Connection implements ConnectionInterface
 {
     use ConnectionTrait;
@@ -41,7 +43,7 @@ class Magento2Connection implements ConnectionInterface
             return $this->connectionDetails;
         }
 
-        $path = explode('vendor', __DIR__);
+        $path = explode('vendor', realpath($_SERVER['SCRIPT_FILENAME']));
         $path = rtrim(reset($path), '/');
         if (!file_exists($path . '/' . $this->settings['path'])) {
             $this->connectionDetails = false;
