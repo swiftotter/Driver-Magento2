@@ -1,6 +1,7 @@
 {
     "name": "swiftotter/driver-magento2",
-    "description": "The Magento 2 transformation component",
+    "description": "The basic set of configurations for transforming Magento 2 databases using Driver",
+    "license": "Apache-2.0",
     "type": "library",
     "require": {
         "swiftotter/driver": "^4"
@@ -10,7 +11,7 @@
     },
     "authors": [
         {
-            "name": "Joseph Maxwell",
+            "name": "SwiftOtter, Inc.",
             "email": "joseph@swiftotter.com"
         }
     ]
