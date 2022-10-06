@@ -91,7 +91,7 @@ class Magento2Connection implements ConnectionInterface
             return $this->connectionDetails;
         }
 
-        $path = explode('vendor', realpath($_SERVER['SCRIPT_FILENAME']));
+        $path = explode('vendor', $_SERVER['PWD'] . '/' . $_SERVER['SCRIPT_FILENAME']);
         $path = rtrim(reset($path), '/');
         if (!file_exists($path . '/' . $this->settings['path'])) {
             $this->connectionDetails = [];
