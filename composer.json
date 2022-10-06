@@ -14,5 +14,9 @@
             "name": "SwiftOtter, Inc.",
             "email": "joseph@swiftotter.com"
         }
-    ]
+    ],
+    "require-dev": {
+        "slevomat/coding-standard": "^8.5",
+        "squizlabs/php_codesniffer": "^3.7"
+    }
 }

@@ -1,9 +1,6 @@
 <?php
+
 declare(strict_types=1);
-/**
- * @by SwiftOtter, Inc. 2/8/20
- * @website https://swiftotter.com
- **/
 
 namespace Driver\Magento2;
 
@@ -17,61 +14,29 @@ class Magento2Connection implements ConnectionInterface
 {
     use ConnectionTrait;
 
-    /** @var Configuration */
-    private $configuration;
+    private Configuration $configuration;
+    // phpcs:ignore SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingTraversableTypeHintSpecification
+    private array $settings;
+    /** @var array<string, string>|null  */
+    private ?array $connectionDetails = null;
 
-    /** @var array */
-    private $connectionDetails;
-
-    /** @var array */
-    private $settings;
-
+    // phpcs:ignore SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingTraversableTypeHintSpecification
     public function __construct(Configuration $configuration, array $settings = [])
     {
         $this->configuration = $configuration;
         $this->settings = $settings;
     }
 
-    private function getDetails()
-    {
-        if ($this->connectionDetails === false || is_array($this->connectionDetails)) {
-            return $this->connectionDetails;
-        }
-
-        if (!is_array($this->settings) || !isset($this->settings['path'])) {
-            $this->connectionDetails = false;
-            return $this->connectionDetails;
-        }
-
-        $path = explode('vendor', realpath($_SERVER['SCRIPT_FILENAME']));
-        $path = rtrim(reset($path), '/');
-        if (!file_exists($path . '/' . $this->settings['path'])) {
-            $this->connectionDetails = false;
-            return $this->connectionDetails;
-        }
-
-        $db = include $path . '/' . $this->settings['path'];
-
-        if (!isset($db['db']['connection']['default'])) {
-            $this->connectionDetails = false;
-            return $this->connectionDetails;
-        }
-
-        $this->connectionDetails = $db['db']['connection']['default'];
-
-        return $this->connectionDetails;
-    }
-
     public function isAvailable(): bool
     {
         $details = $this->getDetails();
-
-        return is_array($details);
+        return !empty($details);
     }
 
     public function getDSN(): string
     {
-        return "mysql:host={$this->getHost()};dbname={$this->getDatabase()};port={$this->getPort()};charset={$this->getCharset()}";
+        return "mysql:host={$this->getHost()};dbname={$this->getDatabase()};"
+            . "port={$this->getPort()};charset={$this->getCharset()}";
     }
 
     public function getCharset(): string
@@ -81,7 +46,7 @@ class Magento2Connection implements ConnectionInterface
 
     public function getHost(): string
     {
-        return $this->getDetails()['host'];
+        return $this->getDetails()['host'] ?? '';
     }
 
     public function getPort(): string
@@ -91,21 +56,57 @@ class Magento2Connection implements ConnectionInterface
 
     public function getDatabase(): string
     {
-        return $this->getDetails()['dbname'];
+        return $this->getDetails()['dbname'] ?? '';
     }
 
     public function getUser(): string
     {
-        return $this->getDetails()['username'];
+        return $this->getDetails()['username'] ?? '';
     }
 
     public function getPassword(): string
     {
-        return $this->getDetails()['password'];
+        return $this->getDetails()['password'] ?? '';
     }
 
+    /**
+     * @return array<string, array<string, string[]>>
+     */
     public function getPreserve(): array
     {
         return $this->settings['preserve'] ?? [];
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    private function getDetails(): array
+    {
+        if (is_array($this->connectionDetails)) {
+            return $this->connectionDetails;
+        }
+
+        if (!isset($this->settings['path'])) {
+            $this->connectionDetails = [];
+            return $this->connectionDetails;
+        }
+
+        $path = explode('vendor', realpath($_SERVER['SCRIPT_FILENAME']));
+        $path = rtrim(reset($path), '/');
+        if (!file_exists($path . '/' . $this->settings['path'])) {
+            $this->connectionDetails = [];
+            return $this->connectionDetails;
+        }
+
+        $db = include $path . '/' . $this->settings['path'];
+
+        if (!isset($db['db']['connection']['default'])) {
+            $this->connectionDetails = [];
+            return $this->connectionDetails;
+        }
+
+        $this->connectionDetails = $db['db']['connection']['default'];
+
+        return $this->connectionDetails;
     }
 }
