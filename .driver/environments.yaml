@@ -2,7 +2,6 @@ environments:
   default:
     empty_tables:
       - cron_schedule
-      - email_catalog
       - import_history
       - importexport_importdata
       - oauth_consumer

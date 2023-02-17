@@ -1,0 +1,214 @@
+update-values:
+  tables:
+    customer_grid_flat:
+      joins:
+        - table: customer_entity
+          alias: c
+          on: c.entity_id = customer_grid_flat.entity_id
+        - table: customer_address_entity
+          alias: ba
+          on: ba.entity_id = c.default_billing
+        - table: customer_address_entity
+          alias: sa
+          on: sa.entity_id = c.default_shipping
+      values:
+        - field: name
+          value: CONCAT_WS(' ', c.firstname, c.lastname)
+        - field: shipping_full
+          value: CONCAT(sa.street, ', ', sa.city, ', ', IFNULL(sa.region, '-'), ' ', sa.postcode, ', ', sa.country_id)
+        - field: billing_full
+          value: CONCAT(ba.street, ', ', ba.city, ', ', IFNULL(ba.region, '-'), ' ', ba.postcode, ', ', ba.country_id)
+    sales_creditmemo_grid:
+      joins:
+        - table: sales_creditmemo
+          alias: sc
+          on: sales_creditmemo_grid.entity_id = sc.entity_id
+        - table: sales_order
+          alias: so
+          on: so.entity_id = sales_creditmemo_grid.order_id
+        - table: sales_order_address
+          alias: ba
+          on: ba.entity_id = sc.billing_address_id
+        - table: sales_order_address
+          alias: sa
+          on: sa.entity_id = sc.shipping_address_id
+      values:
+        - field: billing_name
+          value: CONCAT_WS(' ', ba.firstname, ba.lastname)
+        - field: customer_name
+          value: CONCAT_WS(' ', so.customer_firstname, so.customer_lastname)
+        - field: billing_address
+          value: CONCAT(ba.street, ', ', ba.city, ', ', IFNULL(ba.region, '-'), ' ', ba.postcode, ', ', ba.country_id)
+        - field: shipping_address
+          value: CONCAT(sa.street, ', ', sa.city, ', ', IFNULL(sa.region, '-'), ' ', sa.postcode, ', ', sa.country_id)
+    magento_sales_creditmemo_grid_archive:
+      joins:
+        - table: sales_creditmemo
+          alias: sc
+          on: magento_sales_creditmemo_grid_archive.entity_id = sc.entity_id
+        - table: sales_order
+          alias: so
+          on: so.entity_id = magento_sales_creditmemo_grid_archive.order_id
+        - table: sales_order_address
+          alias: ba
+          on: ba.entity_id = sc.billing_address_id
+        - table: sales_order_address
+          alias: sa
+          on: sa.entity_id = sc.shipping_address_id
+      values:
+        - field: billing_name
+          value: CONCAT_WS(' ', ba.firstname, ba.lastname)
+        - field: customer_name
+          value: CONCAT_WS(' ', so.customer_firstname, so.customer_lastname)
+        - field: billing_address
+          value: CONCAT(ba.street, ', ', ba.city, ', ', IFNULL(ba.region, '-'), ' ', ba.postcode, ', ', ba.country_id)
+        - field: shipping_address
+          value: CONCAT(sa.street, ', ', sa.city, ', ', IFNULL(sa.region, '-'), ' ', sa.postcode, ', ', sa.country_id)
+    sales_invoice_grid:
+      joins:
+        - table: sales_invoice
+          alias: si
+          on: sales_invoice_grid.entity_id = si.entity_id
+        - table: sales_order
+          alias: so
+          on: so.entity_id = sales_invoice_grid.order_id
+        - table: sales_order_address
+          alias: ba
+          on: ba.entity_id = si.billing_address_id
+        - table: sales_order_address
+          alias: sa
+          on: sa.entity_id = si.shipping_address_id
+      values:
+        - field: billing_name
+          value: CONCAT_WS(' ', ba.firstname, ba.lastname)
+        - field: customer_name
+          value: CONCAT_WS(' ', so.customer_firstname, so.customer_lastname)
+        - field: billing_address
+          value: CONCAT(ba.street, ', ', ba.city, ', ', IFNULL(ba.region, '-'), ' ', ba.postcode, ', ', ba.country_id)
+        - field: shipping_address
+          value: CONCAT(sa.street, ', ', sa.city, ', ', IFNULL(sa.region, '-'), ' ', sa.postcode, ', ', sa.country_id)
+    magento_sales_invoice_grid_archive:
+      joins:
+        - table: sales_invoice
+          alias: si
+          on: sales_invoice_grid.entity_id = si.entity_id
+        - table: sales_order
+          alias: so
+          on: so.entity_id = magento_sales_invoice_grid_archive.order_id
+        - table: sales_order_address
+          alias: ba
+          on: ba.entity_id = si.billing_address_id
+        - table: sales_order_address
+          alias: sa
+          on: sa.entity_id = si.shipping_address_id
+      values:
+        - field: billing_name
+          value: CONCAT_WS(' ', ba.firstname, ba.lastname)
+        - field: customer_name
+          value: CONCAT_WS(' ', so.customer_firstname, so.customer_lastname)
+        - field: billing_address
+          value: CONCAT(ba.street, ', ', ba.city, ', ', IFNULL(ba.region, '-'), ' ', ba.postcode, ', ', ba.country_id)
+        - field: shipping_address
+          value: CONCAT(sa.street, ', ', sa.city, ', ', IFNULL(sa.region, '-'), ' ', sa.postcode, ', ', sa.country_id)
+    sales_order_grid:
+      joins:
+        - table: sales_order
+          alias: so
+          on: so.entity_id = sales_order_grid.entity_id
+        - table: sales_order_address
+          alias: sa
+          on: sa.entity_id = so.shipping_address_id
+        - table: sales_order_address
+          alias: ba
+          on: ba.entity_id = so.billing_address_id
+      values:
+        - field: billing_name
+          value: CONCAT_WS(' ', ba.firstname, ba.lastname)
+        - field: shipping_name
+          value: CONCAT_WS(' ', sa.firstname, sa.lastname)
+        - field: customer_name
+          value: CONCAT_WS(' ', so.customer_firstname, so.customer_lastname)
+        - field: billing_address
+          value: CONCAT(ba.street, ', ', ba.city, ', ', IFNULL(ba.region, '-'), ' ', ba.postcode, ', ', ba.country_id)
+        - field: shipping_address
+          value: CONCAT(sa.street, ', ', sa.city, ', ', IFNULL(sa.region, '-'), ' ', sa.postcode, ', ', sa.country_id)
+    magento_sales_order_grid_archive:
+      joins:
+        - table: sales_order
+          alias: so
+          on: so.entity_id = magento_sales_order_grid_archive.entity_id
+        - table: sales_order_address
+          alias: ba
+          on: ba.entity_id = so.billing_address_id
+        - table: sales_order_address
+          alias: sa
+          on: sa.entity_id = so.shipping_address_id
+      values:
+        - field: billing_name
+          value: CONCAT_WS(' ', ba.firstname, ba.lastname)
+        - field: shipping_name
+          value: CONCAT_WS(' ', sa.firstname, sa.lastname)
+        - field: customer_name
+          value: CONCAT_WS(' ', so.customer_firstname, so.customer_lastname)
+        - field: billing_address
+          value: CONCAT(ba.street, ', ', ba.city, ', ', IFNULL(ba.region, '-'), ' ', ba.postcode, ', ', ba.country_id)
+        - field: shipping_address
+          value: CONCAT(sa.street, ', ', sa.city, ', ', IFNULL(sa.region, '-'), ' ', sa.postcode, ', ', sa.country_id)
+    sales_shipment_grid:
+      joins:
+        - table: sales_order
+          alias: so
+          on: so.entity_id = sales_shipment_grid.order_id
+        - table: sales_shipment
+          alias: ss
+          on: ss.entity_id = sales_shipment_grid.entity_id
+        - table: sales_order_address
+          alias: ba
+          on: ba.entity_id = ss.billing_address_id
+        - table: sales_order_address
+          alias: sa
+          on: sa.entity_id = ss.shipping_address_id
+      values:
+        - field: billing_name
+          value: CONCAT_WS(' ', ba.firstname, ba.lastname)
+        - field: shipping_name
+          value: CONCAT_WS(' ', sa.firstname, sa.lastname)
+        - field: customer_name
+          value: CONCAT_WS(' ', so.customer_firstname, so.customer_lastname)
+        - field: billing_address
+          value: CONCAT(ba.street, ', ', ba.city, ', ', IFNULL(ba.region, '-'), ' ', ba.postcode, ', ', ba.country_id)
+        - field: shipping_address
+          value: CONCAT(sa.street, ', ', sa.city, ', ', IFNULL(sa.region, '-'), ' ', sa.postcode, ', ', sa.country_id)
+    magento_sales_shipment_grid_archive:
+      joins:
+        - table: sales_order
+          alias: so
+          on: so.entity_id = sales_shipment_grid.order_id
+        - table: sales_shipment
+          alias: ss
+          on: ss.entity_id = magento_sales_shipment_grid_archive.entity_id
+        - table: sales_order_address
+          alias: ba
+          on: ba.entity_id = ss.billing_address_id
+        - table: sales_order_address
+          alias: sa
+          on: sa.entity_id = ss.shipping_address_id
+      values:
+        - field: billing_name
+          value: CONCAT_WS(' ', ba.firstname, ba.lastname)
+        - field: shipping_name
+          value: CONCAT_WS(' ', sa.firstname, sa.lastname)
+        - field: customer_name
+          value: CONCAT_WS(' ', so.customer_firstname, so.customer_lastname)
+        - field: billing_address
+          value: CONCAT(ba.street, ', ', ba.city, ', ', IFNULL(ba.region, '-'), ' ', ba.postcode, ', ', ba.country_id)
+        - field: shipping_address
+          value: CONCAT(sa.street, ', ', sa.city, ', ', IFNULL(sa.region, '-'), ' ', sa.postcode, ', ', sa.country_id)
+    magento_rma_grid:
+      joins:
+        - table: sales_order
+          alias: so
+          on: so.entity_id = magento_rma_grid.order_id
+      values:
+        - field: customer_name
+          value: CONCAT_WS(' ', so.customer_firstname, so.customer_lastname)
